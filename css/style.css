@@ -1,20 +1,20 @@
 :root {
-  --bg: #070b12;
-  --surface: #0c1220;
-  --surface-2: #0f172a;
-  --soft: #0b1020;
-  --text: #eaf0ff;
-  --muted: #aeb8d6;
-  --line: rgba(255, 255, 255, 0.1);
-  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --bg: #f8f5ef;
+  --surface: #ffffff;
+  --surface-2: #f2eee6;
+  --soft: #f7f3ea;
+  --text: #2f2419;
+  --muted: #7a6b5a;
+  --line: rgba(70, 50, 32, 0.16);
+  --shadow: 0 16px 40px rgba(68, 45, 22, 0.12);
   --radius: 18px;
   --radius-lg: 26px;
 
   /* combine com a logo (azul escuro + branco) */
-  --accent: #2dd4bf; /* turquesa */
-  --accent-2: #60a5fa; /* azul */
-  --btn: #2563eb; /* azul CTA */
-  --btnHover: #1d4ed8;
+  --accent: #c78b4a; /* caramelo */
+  --accent-2: #8b5e34; /* marrom */
+  --btn: #9b6a3a; /* marrom CTA */
+  --btnHover: #7f542c;
 
   --fontTitle: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --fontBody: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -33,9 +33,9 @@ body {
   font-family: var(--fontBody);
   color: var(--text);
   background:
-    radial-gradient(1000px 400px at 15% 10%, rgba(96, 165, 250, 0.14), transparent 60%),
-    radial-gradient(800px 360px at 90% 0%, rgba(45, 212, 191, 0.1), transparent 55%),
-    linear-gradient(180deg, #050710 0%, #070b12 70%);
+    radial-gradient(1000px 400px at 15% 10%, rgba(199, 139, 74, 0.14), transparent 60%),
+    radial-gradient(800px 360px at 90% 0%, rgba(139, 94, 52, 0.1), transparent 55%),
+    linear-gradient(180deg, #fbf8f3 0%, #f4eee4 70%);
   min-height: 100vh;
 }
 
@@ -58,7 +58,7 @@ button {
 
 /* Topbar */
 .topbar {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.7);
   border-bottom: 1px solid var(--line);
 }
 .topbar__inner {
@@ -101,9 +101,9 @@ button {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(7, 11, 18, 0.7);
+  background: rgba(248, 245, 239, 0.92);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--line);
 }
 .header--compact {
   top: 0;
@@ -125,9 +125,9 @@ button {
   height: 46px;
   border-radius: 12px;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-  background: #0b1020;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 24px rgba(68, 45, 22, 0.12);
+  background: #fff;
 }
 .brand__text {
   display: flex;
@@ -153,16 +153,16 @@ button {
 .nav__link {
   position: relative;
   font-weight: 600;
-  color: rgba(234, 240, 255, 0.9);
+  color: var(--text);
   padding: 10px 8px;
   border-radius: 10px;
 }
 .nav__link:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(155, 106, 58, 0.08);
 }
 .nav__link.is-active {
-  background: rgba(37, 99, 235, 0.16);
-  border: 1px solid rgba(37, 99, 235, 0.25);
+  background: rgba(155, 106, 58, 0.14);
+  border: 1px solid rgba(155, 106, 58, 0.3);
 }
 
 .header__actions {
@@ -195,17 +195,17 @@ button {
 .btn--primary {
   background: linear-gradient(180deg, var(--btn) 0%, var(--btnHover) 100%);
   border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 12px 28px rgba(155, 106, 58, 0.25);
 }
 .btn--primary:hover {
   opacity: 0.95;
 }
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--line);
 }
 .btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(155, 106, 58, 0.12);
 }
 .btn--lg {
   padding: 14px 18px;
@@ -222,22 +222,22 @@ button {
   height: 42px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.7);
 }
 .menuBtn__bar {
   display: block;
   width: 20px;
   height: 2px;
   margin: 4px auto;
-  background: rgba(234, 240, 255, 0.9);
+  background: var(--text);
   border-radius: 2px;
 }
 
 /* Mobile Menu */
 .mobileMenu {
   display: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(7, 11, 18, 0.92);
+  border-top: 1px solid var(--line);
+  background: rgba(248, 245, 239, 0.97);
   backdrop-filter: blur(10px);
 }
 .mobileMenu.is-open {
@@ -257,7 +257,7 @@ button {
   font-weight: 700;
 }
 .mobileMenu__link.is-active {
-  background: rgba(37, 99, 235, 0.16);
+  background: rgba(155, 106, 58, 0.14);
   border-color: rgba(37, 99, 235, 0.25);
 }
 .mobileMenu__cta {
@@ -319,7 +319,7 @@ button {
 }
 .badge {
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.7);
   padding: 10px 12px;
   border-radius: 999px;
   font-weight: 700;
@@ -339,7 +339,7 @@ button {
 
 /* Glass Card */
 .glassCard {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(155, 106, 58, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
   padding: 18px;
@@ -377,7 +377,7 @@ button {
   justify-content: center;
   border-radius: 10px;
   background: rgba(37, 99, 235, 0.22);
-  border: 1px solid rgba(37, 99, 235, 0.25);
+  border: 1px solid rgba(155, 106, 58, 0.3);
   font-weight: 900;
 }
 .step__t {
@@ -431,7 +431,7 @@ button {
 .serviceCard {
   border-radius: var(--radius);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.7);
   overflow: hidden;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
   transition:
@@ -544,7 +544,7 @@ button {
 .infoCard {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(155, 106, 58, 0.08);
   padding: 18px;
   box-shadow: var(--shadow);
 }
@@ -735,12 +735,12 @@ button {
   margin-top: 14px;
   display: grid;
   gap: 8px;
-  color: rgba(234, 240, 255, 0.9);
+  color: var(--text);
 }
 .miniNote {
   padding: 12px 14px;
   border-radius: 16px;
-  background: rgba(37, 99, 235, 0.16);
+  background: rgba(155, 106, 58, 0.14);
   border: 1px solid rgba(37, 99, 235, 0.22);
   color: rgba(234, 240, 255, 0.92);
   font-weight: 700;
@@ -749,7 +749,7 @@ button {
 /* Footer */
 .footer {
   padding: 28px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.02);
 }
 .footer__copy{
@@ -856,7 +856,7 @@ button {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(7, 11, 18, 0.6);
-  color: rgba(234, 240, 255, 0.9);
+  color: var(--text);
   max-width: calc(100% - 36px);
   text-align: center;
 }
