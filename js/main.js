@@ -50,6 +50,46 @@
     reveals.forEach((el) => el.classList.add('is-visible'));
   }
 
+  // Metrics count-up (executa uma vez)
+  const counters = Array.from(document.querySelectorAll('[data-count]'));
+  const formatCount = (value) => value.toLocaleString('pt-BR');
+  const animateCounter = (el) => {
+    if (el.dataset.counted === 'true') return;
+    el.dataset.counted = 'true';
+
+    const target = Number(el.getAttribute('data-count') || 0);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1300;
+    const startTime = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      const current = Math.round(target * (1 - Math.pow(1 - progress, 3)));
+      el.textContent = `+${formatCount(current)}${suffix}`;
+
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  if ('IntersectionObserver' in window && counters.length) {
+    const counterObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+  } else {
+    counters.forEach((counter) => animateCounter(counter));
+  }
+
   // Lightbox
   const lbRoot = document.querySelector('[data-lightbox-root]');
   const lbImg = document.querySelector('[data-lightbox-img]');
@@ -107,7 +147,7 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // Service card image switch (serviços)
+  // Service card image switch
   document.querySelectorAll('[data-service-media]').forEach((media) => {
     const images = Array.from(media.querySelectorAll('.serviceCard__img'));
     if (images.length < 2) return;
@@ -126,7 +166,6 @@
 
     const bindArrow = (el, direction) => {
       if (!el) return;
-
       const go = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -141,5 +180,59 @@
 
     bindArrow(prev, -1);
     bindArrow(next, 1);
+  });
+
+  // Service carousels (serviços)
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector('[data-carousel-track]');
+    const prevBtn = carousel.querySelector('[data-carousel-prev]');
+    const nextBtn = carousel.querySelector('[data-carousel-next]');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const slides = Array.from(track.children);
+    if (!slides.length) return;
+
+    let index = 0;
+    const isMobileSwipe = () => window.matchMedia('(max-width: 720px)').matches;
+
+    const getItemsPerView = () => {
+      const styles = window.getComputedStyle(track);
+      const raw = parseInt(styles.getPropertyValue('--items-per-view'), 10);
+      return Number.isFinite(raw) && raw > 0 ? raw : 1;
+    };
+
+    const maxIndex = () => Math.max(0, slides.length - getItemsPerView());
+
+    const update = () => {
+      if (isMobileSwipe()) {
+        track.style.transform = '';
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+      }
+
+      const target = slides[index];
+      if (target) {
+        track.style.transform = `translateX(-${target.offsetLeft}px)`;
+      }
+
+      prevBtn.disabled = index <= 0;
+      nextBtn.disabled = index >= maxIndex();
+    };
+
+    const move = (delta) => {
+      index = Math.max(0, Math.min(maxIndex(), index + delta));
+      update();
+    };
+
+    prevBtn.addEventListener('click', () => move(-1));
+    nextBtn.addEventListener('click', () => move(1));
+
+    window.addEventListener('resize', () => {
+      index = Math.min(index, maxIndex());
+      update();
+    });
+
+    update();
   });
 })();
