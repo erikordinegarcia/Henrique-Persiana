@@ -485,10 +485,11 @@ button {
   color: #fff;
   background: rgba(0, 0, 0, 0.28);
   border: 1px solid rgba(255, 255, 255, 0.28);
-  opacity: 0;
+  opacity: 0.42;
   transition: opacity 0.2s ease, background 0.2s ease;
   cursor: pointer;
   z-index: 2;
+  backdrop-filter: blur(2px);
 }
 .serviceCard__arrow.is-prev {
   left: 8px;
@@ -498,7 +499,7 @@ button {
 }
 .serviceCard:hover .serviceCard__arrow,
 .serviceCard:focus-within .serviceCard__arrow {
-  opacity: 1;
+  opacity: 0.9;
 }
 .serviceCard__arrow:hover {
   background: rgba(0, 0, 0, 0.45);
