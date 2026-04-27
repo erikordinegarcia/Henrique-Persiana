@@ -541,6 +541,96 @@ button {
   border-radius:14px;
 }
 
+/* Serviços (carrosséis) */
+.servicesShowcase .section__title {
+  margin-bottom: 22px;
+}
+.serviceCarousel {
+  margin-top: 28px;
+}
+.serviceCarousel__title {
+  margin: 0 0 14px;
+  font-family: var(--fontTitle);
+  font-size: clamp(24px, 3vw, 30px);
+}
+.serviceCarousel__frame {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.serviceCarousel__viewport {
+  overflow: hidden;
+  padding: 6px 2px;
+}
+.serviceCarousel__track {
+  --items-per-view: 3;
+  --card-gap: 18px;
+  display: flex;
+  gap: var(--card-gap);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.serviceSlide {
+  flex: 0 0 calc((100% - (var(--card-gap) * (var(--items-per-view) - 1))) / var(--items-per-view));
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.servicesShowcase .serviceCard {
+  flex: 1;
+  background: #f7f5f2;
+  border: 1px solid rgba(139, 94, 52, 0.12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+}
+.servicesShowcase .serviceCard:hover {
+  transform: translateY(-4px);
+  background: #fcfbf9;
+  border-color: rgba(139, 94, 52, 0.2);
+}
+.servicesShowcase .serviceCard__media {
+  height: 170px;
+}
+.servicesShowcase .serviceCard__body {
+  padding: 14px 14px 16px;
+}
+.servicesShowcase .serviceCard__body h3 {
+  color: #2a231b;
+}
+.servicesShowcase .serviceCard__body p {
+  color: #6f5d49;
+}
+.servicesShowcase .serviceCard__cta {
+  color: #b3833f;
+}
+.servicesShowcase .serviceCard__budget {
+  margin-top: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+}
+.serviceCarousel__nav {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(139, 94, 52, 0.22);
+  color: #4a3421;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 8px 20px rgba(24, 18, 13, 0.16);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.serviceCarousel__nav:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #fff;
+  box-shadow: 0 12px 24px rgba(24, 18, 13, 0.2);
+}
+.serviceCarousel__nav:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
 
 /* Gallery */
 .galleryItem {
@@ -1077,6 +1167,10 @@ button {
   .grid--services {
     grid-template-columns: repeat(2, 1fr);
   }
+  .serviceCarousel__track {
+    --items-per-view: 2;
+    --card-gap: 14px;
+  }
   .grid--gallery {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1095,12 +1189,57 @@ button {
   .mapIframe{ height: 320px; }
 }
 
+@media (max-width: 720px) {
+  .serviceCarousel__track {
+    --items-per-view: 1;
+    --card-gap: 10px;
+  }
+  .serviceCarousel__frame {
+    display: block;
+    position: relative;
+  }
+  .serviceCarousel__viewport {
+    padding: 6px 0;
+  }
+  .serviceCarousel__nav {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 4;
+    background: rgba(255, 255, 255, 0.94);
+  }
+  .serviceCarousel__nav.is-prev {
+    left: 8px;
+  }
+  .serviceCarousel__nav.is-next {
+    right: 8px;
+  }
+  .servicesShowcase .serviceCard__media {
+    height: 210px;
+  }
+  .servicesShowcase .serviceCard__body {
+    padding: 12px 12px 14px;
+  }
+}
+
 @media (max-width: 560px) {
   .topbar {
     display: none;
   }
   .grid--services {
     grid-template-columns: 1fr;
+  }
+  .serviceCarousel__nav {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+  .serviceCarousel__track {
+    --items-per-view: 1;
+    --card-gap: 12px;
   }
   .grid--gallery {
     grid-template-columns: repeat(2, 1fr);
