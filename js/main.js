@@ -107,7 +107,7 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // Service card image switch (serviços)
+  // Service card image switch
   document.querySelectorAll('[data-service-media]').forEach((media) => {
     const images = Array.from(media.querySelectorAll('.serviceCard__img'));
     if (images.length < 2) return;
@@ -126,7 +126,6 @@
 
     const bindArrow = (el, direction) => {
       if (!el) return;
-
       const go = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -141,5 +140,51 @@
 
     bindArrow(prev, -1);
     bindArrow(next, 1);
+  });
+
+  // Service carousels (serviços)
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector('[data-carousel-track]');
+    const prevBtn = carousel.querySelector('[data-carousel-prev]');
+    const nextBtn = carousel.querySelector('[data-carousel-next]');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const slides = Array.from(track.children);
+    if (!slides.length) return;
+
+    let index = 0;
+
+    const getItemsPerView = () => {
+      const styles = window.getComputedStyle(track);
+      const raw = parseInt(styles.getPropertyValue('--items-per-view'), 10);
+      return Number.isFinite(raw) && raw > 0 ? raw : 1;
+    };
+
+    const maxIndex = () => Math.max(0, slides.length - getItemsPerView());
+
+    const update = () => {
+      const target = slides[index];
+      if (target) {
+        track.style.transform = `translateX(-${target.offsetLeft}px)`;
+      }
+
+      prevBtn.disabled = index <= 0;
+      nextBtn.disabled = index >= maxIndex();
+    };
+
+    const move = (delta) => {
+      index = Math.max(0, Math.min(maxIndex(), index + delta));
+      update();
+    };
+
+    prevBtn.addEventListener('click', () => move(-1));
+    nextBtn.addEventListener('click', () => move(1));
+
+    window.addEventListener('resize', () => {
+      index = Math.min(index, maxIndex());
+      update();
+    });
+
+    update();
   });
 })();
