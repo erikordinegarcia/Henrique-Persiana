@@ -451,6 +451,7 @@ button {
   border-color: rgba(255, 255, 255, 0.16);
 }
 .serviceCard__media {
+  position: relative;
   height: 170px;
   background: rgba(0, 0, 0, 0.25);
 }
@@ -458,6 +459,49 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.serviceCard__media--switch {
+  overflow: hidden;
+}
+.serviceCard__img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.serviceCard__img.is-active {
+  opacity: 1;
+}
+.serviceCard__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  z-index: 2;
+}
+.serviceCard__arrow.is-prev {
+  left: 8px;
+}
+.serviceCard__arrow.is-next {
+  right: 8px;
+}
+.serviceCard:hover .serviceCard__arrow,
+.serviceCard:focus-within .serviceCard__arrow {
+  opacity: 1;
+}
+.serviceCard__arrow:hover {
+  background: rgba(0, 0, 0, 0.45);
 }
 .serviceCard__body {
   padding: 14px;

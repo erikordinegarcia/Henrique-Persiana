@@ -106,4 +106,40 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+
+  // Service card image switch (serviços)
+  document.querySelectorAll('[data-service-media]').forEach((media) => {
+    const images = Array.from(media.querySelectorAll('.serviceCard__img'));
+    if (images.length < 2) return;
+
+    let current = images.findIndex((img) => img.classList.contains('is-active'));
+    if (current < 0) current = 0;
+
+    const show = (nextIndex) => {
+      images[current].classList.remove('is-active');
+      current = (nextIndex + images.length) % images.length;
+      images[current].classList.add('is-active');
+    };
+
+    const prev = media.querySelector('[data-service-prev]');
+    const next = media.querySelector('[data-service-next]');
+
+    const bindArrow = (el, direction) => {
+      if (!el) return;
+
+      const go = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        show(current + direction);
+      };
+
+      el.addEventListener('click', go);
+      el.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') go(event);
+      });
+    };
+
+    bindArrow(prev, -1);
+    bindArrow(next, 1);
+  });
 })();
