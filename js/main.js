@@ -50,6 +50,46 @@
     reveals.forEach((el) => el.classList.add('is-visible'));
   }
 
+  // Metrics count-up (executa uma vez)
+  const counters = Array.from(document.querySelectorAll('[data-count]'));
+  const formatCount = (value) => value.toLocaleString('pt-BR');
+  const animateCounter = (el) => {
+    if (el.dataset.counted === 'true') return;
+    el.dataset.counted = 'true';
+
+    const target = Number(el.getAttribute('data-count') || 0);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1300;
+    const startTime = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      const current = Math.round(target * (1 - Math.pow(1 - progress, 3)));
+      el.textContent = `+${formatCount(current)}${suffix}`;
+
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  if ('IntersectionObserver' in window && counters.length) {
+    const counterObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+  } else {
+    counters.forEach((counter) => animateCounter(counter));
+  }
+
   // Lightbox
   const lbRoot = document.querySelector('[data-lightbox-root]');
   const lbImg = document.querySelector('[data-lightbox-img]');

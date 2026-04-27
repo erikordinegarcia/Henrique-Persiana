@@ -744,6 +744,61 @@ button {
   display: block;
 }
 
+/* Faixa de métricas */
+.metricsBand {
+  background: linear-gradient(180deg, #f4efe6 0%, #f8f5ef 100%);
+  border-top: 1px solid rgba(139, 94, 52, 0.1);
+  border-bottom: 1px solid rgba(139, 94, 52, 0.1);
+}
+.metricsBand__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.metricCard {
+  border-radius: 20px;
+  border: 1px solid rgba(139, 94, 52, 0.14);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 12px 24px rgba(29, 20, 12, 0.12);
+  text-align: center;
+  padding: 18px 14px 16px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.metricCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(29, 20, 12, 0.16);
+}
+.metricCard__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: rgba(182, 138, 70, 0.14);
+  border: 1px solid rgba(182, 138, 70, 0.28);
+  font-size: 22px;
+}
+.metricCard__value {
+  margin-top: 12px;
+  display: block;
+  color: #b3833f;
+  font-family: var(--fontTitle);
+  font-size: clamp(36px, 4vw, 48px);
+  line-height: 1;
+}
+.metricCard__label {
+  margin: 10px 0 0;
+  font-weight: 700;
+  color: #4b3a28;
+}
+.metricCard__legend {
+  margin-top: 8px;
+  display: block;
+  color: #6f5d49;
+  line-height: 1.45;
+  font-size: 12px;
+}
+
 /* Info card */
 .infoCard {
   border-radius: var(--radius-lg);
@@ -1273,6 +1328,9 @@ button {
     margin-left: auto;
     margin-right: auto;
   }
+  .metricsBand__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px){
@@ -1344,5 +1402,11 @@ button {
   }
   .aboutUs__media {
     min-height: 250px;
+  }
+  .metricCard {
+    padding: 15px 10px;
+  }
+  .metricCard__value {
+    font-size: 34px;
   }
 }
