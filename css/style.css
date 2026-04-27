@@ -573,28 +573,39 @@ button {
 }
 .serviceSlide {
   flex: 0 0 calc((100% - (var(--card-gap) * (var(--items-per-view) - 1))) / var(--items-per-view));
-  border-radius: 22px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f7f4ef 0%, #f3ede4 100%);
-  border: 1px solid rgba(139, 94, 52, 0.15);
-  box-shadow: 0 16px 30px rgba(35, 33, 28, 0.14);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
-.serviceSlide:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 38px rgba(35, 33, 28, 0.2);
+.servicesShowcase .serviceCard {
+  flex: 1;
+  background: #f7f5f2;
+  border: 1px solid rgba(139, 94, 52, 0.12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
 }
-.serviceSlide img {
-  display: block;
-  width: 100%;
-  height: clamp(180px, 27vw, 280px);
-  object-fit: cover;
+.servicesShowcase .serviceCard:hover {
+  transform: translateY(-4px);
+  background: #fcfbf9;
+  border-color: rgba(139, 94, 52, 0.2);
 }
-.serviceSlide p {
-  margin: 0;
-  padding: 14px 16px 16px;
-  font-weight: 700;
-  color: #2f2418;
+.servicesShowcase .serviceCard__media {
+  height: 170px;
+}
+.servicesShowcase .serviceCard__body {
+  padding: 14px 14px 16px;
+}
+.servicesShowcase .serviceCard__body h3 {
+  color: #2a231b;
+}
+.servicesShowcase .serviceCard__body p {
+  color: #6f5d49;
+}
+.servicesShowcase .serviceCard__cta {
+  color: #b3833f;
+}
+.servicesShowcase .serviceCard__budget {
+  margin-top: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
 }
 .serviceCarousel__nav {
   width: 42px;
@@ -1197,9 +1208,6 @@ button {
   .serviceCarousel__track {
     --items-per-view: 2;
     --card-gap: 12px;
-  }
-  .serviceSlide img {
-    height: 170px;
   }
   .grid--gallery {
     grid-template-columns: repeat(2, 1fr);
