@@ -1190,32 +1190,32 @@ button {
 }
 
 @media (max-width: 720px) {
-  .serviceCarousel__track {
-    --items-per-view: 1;
-    --card-gap: 10px;
-  }
   .serviceCarousel__frame {
     display: block;
-    position: relative;
   }
   .serviceCarousel__viewport {
-    padding: 6px 0;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 6px 0 8px 14px;
+    scrollbar-width: none;
+  }
+  .serviceCarousel__viewport::-webkit-scrollbar {
+    display: none;
+  }
+  .serviceCarousel__track {
+    --card-gap: 12px;
+    width: max-content;
+    padding-right: 14px;
+  }
+  .serviceSlide {
+    flex: 0 0 84vw;
+    max-width: 86vw;
+    scroll-snap-align: start;
   }
   .serviceCarousel__nav {
-    width: 40px;
-    height: 40px;
-    font-size: 25px;
-    position: absolute;
-    top: 42%;
-    transform: translateY(-50%);
-    z-index: 4;
-    background: rgba(255, 255, 255, 0.94);
-  }
-  .serviceCarousel__nav.is-prev {
-    left: 8px;
-  }
-  .serviceCarousel__nav.is-next {
-    right: 8px;
+    display: none;
   }
   .servicesShowcase .serviceCard__media {
     height: 210px;
@@ -1233,13 +1233,11 @@ button {
     grid-template-columns: 1fr;
   }
   .serviceCarousel__nav {
-    width: 38px;
-    height: 38px;
-    font-size: 22px;
+    display: none;
   }
-  .serviceCarousel__track {
-    --items-per-view: 1;
-    --card-gap: 12px;
+  .serviceSlide {
+    flex-basis: 85vw;
+    max-width: 85vw;
   }
   .grid--gallery {
     grid-template-columns: repeat(2, 1fr);

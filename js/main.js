@@ -153,6 +153,7 @@
     if (!slides.length) return;
 
     let index = 0;
+    const isMobileSwipe = () => window.matchMedia('(max-width: 720px)').matches;
 
     const getItemsPerView = () => {
       const styles = window.getComputedStyle(track);
@@ -163,6 +164,13 @@
     const maxIndex = () => Math.max(0, slides.length - getItemsPerView());
 
     const update = () => {
+      if (isMobileSwipe()) {
+        track.style.transform = '';
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+      }
+
       const target = slides[index];
       if (target) {
         track.style.transform = `translateX(-${target.offsetLeft}px)`;
