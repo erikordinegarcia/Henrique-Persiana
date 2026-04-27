@@ -1189,6 +1189,42 @@ button {
   .mapIframe{ height: 320px; }
 }
 
+@media (max-width: 720px) {
+  .serviceCarousel__track {
+    --items-per-view: 1;
+    --card-gap: 10px;
+  }
+  .serviceCarousel__frame {
+    display: block;
+    position: relative;
+  }
+  .serviceCarousel__viewport {
+    padding: 6px 0;
+  }
+  .serviceCarousel__nav {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 4;
+    background: rgba(255, 255, 255, 0.94);
+  }
+  .serviceCarousel__nav.is-prev {
+    left: 8px;
+  }
+  .serviceCarousel__nav.is-next {
+    right: 8px;
+  }
+  .servicesShowcase .serviceCard__media {
+    height: 210px;
+  }
+  .servicesShowcase .serviceCard__body {
+    padding: 12px 12px 14px;
+  }
+}
+
 @media (max-width: 560px) {
   .topbar {
     display: none;
@@ -1196,17 +1232,13 @@ button {
   .grid--services {
     grid-template-columns: 1fr;
   }
-  .serviceCarousel__frame {
-    grid-template-columns: 34px 1fr 34px;
-    gap: 8px;
-  }
   .serviceCarousel__nav {
-    width: 34px;
-    height: 34px;
+    width: 38px;
+    height: 38px;
     font-size: 22px;
   }
   .serviceCarousel__track {
-    --items-per-view: 2;
+    --items-per-view: 1;
     --card-gap: 12px;
   }
   .grid--gallery {
