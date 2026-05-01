@@ -813,7 +813,7 @@ button {
 }
 .infoCard__text {
   margin: 0 0 14px;
-  color: rgba(234, 240, 255, 0.86);
+  color: var(--accent);
   line-height: 1.6;
 }
 .infoCard__grid {
@@ -857,7 +857,7 @@ button {
 .testimonial__quote {
   margin: 0 0 10px;
   line-height: 1.7;
-  color: rgba(234, 240, 255, 0.88);
+  color: var(--accent);
 }
 .testimonial__who {
   color: var(--muted);
@@ -912,7 +912,7 @@ button {
 }
 .ctaBand__text {
   margin: 0;
-  color: var(--muted);
+  color: var(--surface-2);
 }
 
 /* Page hero */
@@ -1013,7 +1013,7 @@ button {
 }
 .footer__copy{
   font-size: 13px;
-  color: rgba(255,255,255,.55);
+  color: var(--muted);
 }
 .footer__grid {
   display: grid;
@@ -1213,12 +1213,12 @@ button {
 }
 
 .contactRow__value{
-  color: rgba(255,255,255,.75);
+  color: var(--muted);
   line-height: 1.35;
 }
 
 .contactRow__link{
-  color: rgba(255,255,255,.85);
+  color: var(--muted);
   text-decoration: none;
 }
 .contactRow__link:hover{
