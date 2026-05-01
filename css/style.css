@@ -1225,6 +1225,64 @@ button {
   text-decoration: underline;
 }
 
+/* Ajustes de contraste a partir de "Outros servisos" */
+#outros-servicos,
+#outros-servicos ~ section,
+#outros-servicos ~ footer {
+  color: #2f2418;
+}
+#outros-servicos .section__subtitle,
+#outros-servicos ~ section .section__subtitle {
+  color: #6f5d49;
+}
+#outros-servicos ~ section .check,
+#outros-servicos ~ section .infoCard,
+#outros-servicos ~ section .testimonial,
+#outros-servicos ~ section .faq__item {
+  border-color: rgba(139, 94, 52, 0.18);
+  background: rgba(255, 255, 255, 0.8);
+}
+#outros-servicos ~ section .infoCard__text,
+#outros-servicos ~ section .testimonial__quote,
+#outros-servicos ~ section .faq__item p,
+#outros-servicos ~ section .contactRow__value {
+  color: #5f4d3a;
+}
+#outros-servicos ~ section .mini {
+  border-color: rgba(139, 94, 52, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+}
+#outros-servicos ~ section .mini__k,
+#outros-servicos ~ section .testimonial__who,
+#outros-servicos ~ section .contactRow__link {
+  color: #6f5d49;
+}
+#outros-servicos ~ .ctaBand {
+  background:
+    radial-gradient(800px 220px at 20% 0%, rgba(182, 138, 70, 0.16), transparent 60%),
+    radial-gradient(700px 220px at 90% 0%, rgba(139, 94, 52, 0.12), transparent 60%),
+    #f6f1e8;
+  border-top-color: rgba(139, 94, 52, 0.14);
+}
+#outros-servicos ~ .ctaBand .ctaBand__title {
+  color: #2f2418;
+}
+#outros-servicos ~ .ctaBand .ctaBand__text {
+  color: #6f5d49;
+}
+#outros-servicos ~ footer.footer {
+  background: #eee6db;
+  border-top-color: rgba(139, 94, 52, 0.14);
+}
+#outros-servicos ~ footer .footer__text,
+#outros-servicos ~ footer .footer__copy,
+#outros-servicos ~ footer .footer__link {
+  color: #5f4d3a;
+}
+#outros-servicos ~ footer .footer__title {
+  color: #2f2418;
+}
+
 /* card do mapa (reaproveita o seu) */
 .mapCard{
   height: 100%;
