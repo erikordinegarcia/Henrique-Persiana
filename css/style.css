@@ -1176,7 +1176,7 @@ button {
   font-size: 13px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.65);
+  color: var(--muted);
   margin-bottom: 10px;
 }
 
