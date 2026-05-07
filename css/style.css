@@ -121,13 +121,13 @@ button {
   gap: 14px;
 }
 .brand__logo {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 74px;
   border-radius: 16px;
   object-fit: cover;
 
   background: #111;
-  padding: 4px;
+  padding: 0px;
 
   border: 1px solid rgba(155, 106, 58, 0.18);
 
